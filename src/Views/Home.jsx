@@ -22,14 +22,9 @@ import GoogleAuth from "../Components/GoogleAuth";
 
 export default function Home() {
     const { isSmall } = useUtility()
-    
-    
-
 
     return (
         <div>
-
-
             <div className=" bg-gray-100">
                 {/* Announcement Banner */}
                 <GoogleAuth/>
