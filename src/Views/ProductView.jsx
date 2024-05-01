@@ -1,15 +1,19 @@
 import { getDefaultNormalizer } from "@testing-library/react";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Button, Typography } from "@material-tailwind/react";
 import { imgData } from "../Data/data";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faCartShopping, faX } from '@fortawesome/free-solid-svg-icons';
 import { ChevronLeft, ChevronRight } from "react-feather";
 import { useUtility } from "../Hooks/UtilityProvider";
+import { useQuery } from "@tanstack/react-query";
+
 import { Navigationbar } from "../Components/Navigationbar";
 import { CategoryPanel } from "../Components/CategoryPanel";
 import Announcement from "../Components/Announcement"
 import ProductSlider from "../Components/ProductSlider";
+import { fetchProductById } from "../requests/products";
 
 function LightBox({ products, slideIndex, nextSlide, previousSlide, setShowLightbox }) {
 
@@ -51,6 +55,10 @@ function LightBox({ products, slideIndex, nextSlide, previousSlide, setShowLight
 
 
 function ProductView() {
+    const { id } = useParams();
+    console.log("id",id);
+    
+
     const [products] = useState(imgData)
     const [value, setValue] = useState(0)
     const [amount, setAmount] = useState(0)
@@ -81,6 +89,20 @@ function ProductView() {
         setAmount(amount - 1)
         if (amount <= 0) setAmount(0);
     };
+
+
+    //Data retrieval func
+    const { data: product, isLoading } = useQuery({
+        queryFn: () => fetchProductById(id),
+        queryKey: ["product"]
+    });
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
+    console.log(product);
+    //data thiyenne product eke eg: name -> product.name
 
     return (
         <div>

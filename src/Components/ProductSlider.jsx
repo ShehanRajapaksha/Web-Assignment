@@ -73,7 +73,7 @@ export default function ProductSlider({data:propData=[]}){
         </div>
         
         <div className="flex  justify-center ">
-            <div className={`overflow-hidden ${propData ? 'hidden' : ''}`}>
+            <div className={`overflow-hidden ${propData.length === 0 ? '' : 'hidden'}`}>
                 <Button
                     ripple={true}
                     fullWidth={true} 

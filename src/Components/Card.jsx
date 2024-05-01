@@ -6,10 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from "react-use-cart";
 import { useUtility } from "../Hooks/UtilityProvider";
+import { useNavigate } from 'react-router-dom';
 
 export default function Card ({item,index}){
     const{updateOpenCart}= useUtility()
-    const {addItem} =useCart()
+    const navigate = useNavigate();
+    const {addItem} =useCart();
+
     const [isCartButtonHovered, setIsCartButtonHovered] = useState(false);
     const [isHeartButtonHovered, setIsHeartButtonHovered] = useState(false);
 
@@ -31,11 +34,14 @@ export default function Card ({item,index}){
       
         // Store the updated list back to local storage
         localStorage.setItem('recentProducts', JSON.stringify(recentProducts));
+       
+        navigate(`/product/${productId}`);
       }
+  
 
     return (
-        <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl" onClick={() => handleProductClick(item.id)}>
-            <a href="/product-view">
+        <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl" onClick={() => handleProductClick(item.product_id)}>
+
                 <img
                     src={item.image}
                     alt={item.name}
@@ -101,7 +107,6 @@ export default function Card ({item,index}){
                         </div>
                     </div>
                 </div>
-            </a>
         </div>
     );
 };

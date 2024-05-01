@@ -32,7 +32,7 @@ function App() {
                 <Route path='/all-products' Component={AllProducts} />
                 <Route path='/checkout' Component={Checkout} />
 
-                <Route path='/product-view' Component={ProductView} />
+                <Route exact path="/product/:id" Component={ProductView}/>
                 <Route path='/cart' Component={CartPage} />
                 <Route path='/login' Component={Login} />
                 <Route path='/signup' Component={SignUp} />
