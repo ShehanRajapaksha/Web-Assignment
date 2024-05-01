@@ -22,9 +22,6 @@ function App() {
 
 
   return (
-
-
-
     <Router>
       <QueryClientProvider client={queryClient}>
         <GoogleOAuthProvider clientId='1020540534086-om8jnfsei6nkekkoh33ln9p8v4sja2dd.apps.googleusercontent.com'>

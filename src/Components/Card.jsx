@@ -35,7 +35,7 @@ export default function Card ({item,index}){
 
     return (
         <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl" onClick={() => handleProductClick(item.id)}>
-            <a href="#">
+            <a href="/product-view">
                 <img
                     src={item.image}
                     alt={item.name}
