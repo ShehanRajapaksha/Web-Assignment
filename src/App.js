@@ -16,7 +16,6 @@ import SignUp from './Views/SignUp';
 import Error404 from './Views/Error404';
 
 
-
 const queryClient = new QueryClient()
 function App() {
 
@@ -46,7 +45,9 @@ function App() {
 
 
 
+
     </Router>
+   
 
 
 

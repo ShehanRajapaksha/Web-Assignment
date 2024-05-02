@@ -1,26 +1,45 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import { Input, Button, Typography } from '@material-tailwind/react'
-import { useFormik } from 'formik'
+import { Formik, useFormik } from 'formik'
 import { SignUpSchema } from '../Schemas/SignUpSchema'
 import ErrorForm from '../Components/ErrorForm'
 import { useGoogleLogin } from '@react-oauth/google';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 
 
 export default function SignUp(params) {
     const [passwordFocused, setPasswordFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
     };
 
-    const onSubmit = async (values, formikBag) => {
-        console.log(values);
-        formikBag.setSubmitting(false);
+    const onSubmit = async (values, formikBag,) => {
+        try {
+            // Post email and password to the server
+            const response = await axios.post('https://8631-2402-4000-1202-c3d9-c8c1-5af9-236a-2bb1.ngrok-free.app/user', {
+                email: values.email,
+                password: values.password
+            });
+            if (!response.data) {
+                throw new Error('Response data is empty');
+            }
+            console.log(response.data); // Log the response from the server
+            resetForm()
+            navigate("/")
 
+           
+            
+        } catch (error) {
+            console.error(error); // Log any errors that occur
+            formikBag.setSubmitting(false); // Set form submission to false in case of error
+        }
     }
 
     const login = useGoogleLogin({
@@ -32,7 +51,7 @@ export default function SignUp(params) {
     });
 
 
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting } = useFormik({
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting, resetForm } = useFormik({
         initialValues: {
             name: "",
             email: "",
@@ -48,7 +67,7 @@ export default function SignUp(params) {
         <div>
             {/* TODO: Use alerts after connecting with backend with appropirate logic  */}
             {/*<CustomAlert msg={"Login success"}  type={2}/>*/}
-            <section className="px-4 pb-24 mx-auto max-w-7xl">
+            <section className="px-4 pt-16 mx-auto max-w-7xl">
 
                 <div className="w-full py-6 mx-auto md:w-3/5 lg:w-2/5 mt-8">
                     <h1 className="mb-1 text-xl font-medium text-center text-gray-800 md:text-3xl">Create your  Account</h1>
@@ -56,17 +75,6 @@ export default function SignUp(params) {
                         Already have an account?
                         <a href="/Login" className=" text-Red1 hover:text-Red2"> Sign in</a>
                     </p>
-                    <div className=' flex flex-row mt-12 mb-4 gap-3'>
-                        <button className="flex items-center shadow-sm justify-center border border-blue-gray-100 cursor-pointer w-full py-4  text-sm font-medium transition duration-300 rounded-full text-grey-900 bg-grey-300 hover:bg-grey-400  " onClick={login} >
-                            <img className="h-5 mr-2" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png" alt="" />
-                            Sign in with Google
-                        </button>
-                        {/*Use later - Sign in with apple */}
-                        {/*<button className="flex items-center justify-center shadow-sm border border-blue-gray-100 cursor-pointer w-full py-4  text-sm font-medium transition duration-300 rounded-full text-grey-900 bg-grey-300 hover:bg-grey-400  " >
-                            <img className="h-5 mr-2" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="" />
-                            Sign in with Apple
-    </button>*/}
-                    </div>
                     <div className="flex items-center mb-3 ">
                         <hr className="h-0 border-b border-solid ml-6 border-gray-300 grow" />
                         <p className="mx-4 text-grey-600">OR</p>

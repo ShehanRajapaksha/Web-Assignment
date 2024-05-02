@@ -9,10 +9,12 @@ import {
     Button,
 } from "@material-tailwind/react";
 import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useFormik } from 'formik'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye,faEyeSlash,  } from '@fortawesome/free-solid-svg-icons'
+import { faEye,faEyeSlash  } from '@fortawesome/free-solid-svg-icons'
 import CustomAlert from '../Components/CustomAlert';
 
 const validationSchema = Yup.object().shape({
@@ -23,6 +25,8 @@ const validationSchema = Yup.object().shape({
 export function Login() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+
+    const navigate=useNavigate()
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -38,12 +42,30 @@ export function Login() {
 
 
     const onSubmit = async (values, formikBag) => {
-        formikBag.setSubmitting(false);
-        console.log(values);
+        try {
+            // Post email and password to the server
+            const response = await axios.post('https://8631-2402-4000-1202-c3d9-c8c1-5af9-236a-2bb1.ngrok-free.app/user', {
+                email: values.email,
+                password: values.password
+            });
+    
+            if (response.status === 201) {
+                // Redirect to "/"
+                navigate("/");
+            } else {
+                console.error(response.status);
+            }
+    
+        } catch (error) {
+            console.error("An error occurred while submitting the form:", error);
+        } finally {
+            // Reset the form state
+            resetForm()
 
-    }
+        }
+    };
 
-    const { values, errors, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+    const { values, errors, isSubmitting, handleBlur, handleChange, handleSubmit,resetForm } = useFormik({
         initialValues: {
             email: "",
             password: "",
@@ -53,19 +75,19 @@ export function Login() {
     })
 
     return (
-        <div className="container flex flex-col mx-auto bg-white rounded-lg my-5">
+        <div className="container flex flex-col mx-auto bg-white rounded-lg my-5 mt-16">
         {/* TODO: Use alerts after connecting with backend with appropirate logic  */}
         {/*<CustomAlert msg={"Login success"}  type={2}/>*/}
             <div className="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
                 <div className="flex items-center justify-center w-full lg:p-12">
-                    <Card className="w-96 shadow-xl border border-blue-gray-50 rounded-3xl">
+                    <Card className="w-96 shadow-xl border border-blue-gray-50 rounded-3xl py-10">
                         <Typography variant='h3' className="mb-3  font-bold text-center text-dark-grey-900 mt-6" textGradient>Login</Typography>
                         <p className="mb-4 text-center text-grey-700">Enter your email and password</p>
                         <form >
                             <CardBody className="flex flex-col gap-4">
 
 
-                                {/* TODO: Use formik*/}
+                
                                 <div>
                                     <Input
                                         label="Email"
@@ -122,20 +144,7 @@ export function Login() {
                                         Sign up
                                     </Typography>
                                 </Typography>
-                                <div className="flex items-center mb-3 mt-6">
-                                    <hr className="h-0 border-b border-solid ml-6 border-gray-300 grow" />
-                                    <p className="mx-4 text-grey-600">or</p>
-                                    <hr className="h-0 border-b border-solid mr-6 border-gray-300 grow" />
-                                </div>
-                                <button className="flex items-center justify-center cursor-pointer w-full py-4  text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400  focus:ring-grey-300" onClick={login}>
-                                    <img className="h-5 mr-2" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png" alt="" />
-                                    Sign in with Google
-                                </button>
-                                {/*use later- sign in with apple*/}
-                                {/*<button className="flex items-center justify-center cursor-pointer w-full py-4  text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
-                                    <img className="h-5 mr-2" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="" />
-                                    Sign in with Apple
-                                </button>*/}
+                               
 
                             </CardFooter>
                         </form>

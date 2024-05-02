@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import Announcement from "../Components/Announcement"
 import Carousel from "../Components/Carousel";
 import CatSlider from "../Components/CatSlider"
@@ -8,13 +8,10 @@ import ProductSlider from "../Components/ProductSlider";
 import Divider from "../Components/Divider";
 import Banner from "../Components/Banner"
 import Footer from "../Components/Footer";
-import ProductList from "../Components/ProductsList"
 import MobileCarousel from "../Components/MobileCarousel";
 import SaleCarousel from "../Components/SaleCarousel";
 import { useUtility } from "../Hooks/UtilityProvider";
 import EnterEmail from "../Components/EnterEmail";
-
-import GoogleAuth from "../Components/GoogleAuth";
 
 
 
@@ -27,7 +24,7 @@ export default function Home() {
         <div>
             <div className=" bg-gray-100">
                 {/* Announcement Banner */}
-                <GoogleAuth/>
+
                 <Announcement />
                 <Navigationbar />
                 <CategoryPanel />
