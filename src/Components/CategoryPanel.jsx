@@ -19,7 +19,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row  text-center`}
                             onMouseEnter={() => setHoveredItem(1)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            
                         >
                             <Typography className={`${hoveredItem === 1 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 1 ? "h6" : "body1"}>
@@ -36,7 +36,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(2)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            
                         >
                             <Typography className={`${hoveredItem === 2 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 2 ? "h6" : "body1"}>
@@ -53,7 +53,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(3)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 3 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 3 ? "h6" : "body1"}>
@@ -70,7 +70,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(4)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 4 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 4 ? "h6" : "body1"}>
@@ -87,7 +87,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(5)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 5 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 5 ? "h6" : "body1"}>
@@ -104,7 +104,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(6)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 6 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 6 ? "h6" : "body1"}>
@@ -121,7 +121,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(7)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 7 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 7 ? "h6" : "body1"}>
@@ -138,7 +138,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(8)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 8 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 8 ? "h6" : "body1"}>
@@ -155,7 +155,7 @@ export function CategoryPanel({openNav}) {
                         <li
                             className={`rounded-xl pr-2 py-2  flex flex-row `}
                             onMouseEnter={() => setHoveredItem(9)}
-                            onMouseLeave={() => setHoveredItem(null)}
+                            // onMouseLeave={() => setHoveredItem(null)}
                         >
                             <Typography className={`${hoveredItem === 9 ? 'ml-4' : 'ml-2'}`}
                                 variant={hoveredItem === 9 ? "h6" : "body1"}>
