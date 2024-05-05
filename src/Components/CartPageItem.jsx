@@ -11,11 +11,11 @@ export default function CartPageItem({item,index}) {
     const { updateItemQuantity, removeItem } = useCart()
 
     const handleDecrement = () => {
-      updateItemQuantity(item.id, item.quantity - 1)
+      updateItemQuantity(item.product_id, item.quantity - 1)
     };
   
     const handleIncrement = () => {
-      updateItemQuantity(item.id, item.quantity + 1)
+      updateItemQuantity(item.product_id, item.quantity + 1)
     };
 
     return(
