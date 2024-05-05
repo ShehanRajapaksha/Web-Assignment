@@ -1,5 +1,6 @@
 import axios from "axios";
-const env='https://9be0-112-134-149-143.ngrok-free.app'
+
+const env='https://1972-112-134-149-143.ngrok-free.app'
 
 export const fetchProducts = async () => {
     try {

@@ -40,7 +40,7 @@ export default function Card ({item,index}){
   
 
     return (
-        <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl cursor-pointer" onClick={() => handleProductClick(item.id)}>
+        <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl cursor-pointer" onClick={() => handleProductClick(item.product_id)}>
 
                 <img
                     src={item.image}
