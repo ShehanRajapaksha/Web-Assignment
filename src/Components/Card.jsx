@@ -40,11 +40,11 @@ export default function Card ({item,index}){
   
 
     return (
-        <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl" onClick={() => handleProductClick(item.product_id)}>
+        <div className="w-80 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl cursor-pointer" onClick={() => handleProductClick(item.id)}>
 
                 <img
                     src={item.image}
-                    alt={item.name}
+                    alt={item.Name}
                     className="h-56 w-80 object-cover rounded-t-xl"
                 />
                 <div className="px-4 py-3 w-80 h-32">
@@ -70,11 +70,11 @@ export default function Card ({item,index}){
                         </Typography>
                     </div>
                     
-                    <p className="text-lg font-bold text-black truncate block capitalize">{item.name}</p>
+                    <p className="text-lg font-bold text-black truncate block capitalize">{item.Name}</p>
                     <div className="flex items-center">
                         <p className="text-lg font-semibold text-black cursor-auto my-3">${item.price}</p>
                         <del>
-                            <p className="text-sm text-gray-600 cursor-auto ml-2">$199</p>
+                            <p className="text-sm text-gray-600 cursor-auto ml-2">${item.price * 2}</p>
                         </del>
                         <div className="ml-auto flex gap-2">
                             <button

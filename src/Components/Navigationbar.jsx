@@ -14,6 +14,7 @@ import { CartOverlay } from "./CartOverlay";
 import { useCart } from "react-use-cart";
 import { useUtility } from "../Hooks/UtilityProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 
 export function Navigationbar() {
@@ -63,16 +64,18 @@ export function Navigationbar() {
         
 
           <div className="container  mx-auto flex flex-wrap items-center justify-between text-blue-gray-900">
-            <div className="flex items-center xl:-ml-16  md:-ml-4">
-              {isSmall ? (
-                <img src="/icons/Zenko-logo-small.png" className="h-12 md:w-auto sm:scale-50" alt="Zenko Logo" />
-              ) : (
-                <div className="p-2">
-                  <img src="/icons/Zenko-logo-crop.png" className="h-12 w-auto" alt="Zenko Logo" />
-                </div>
-              )}
+            <Link to="/">
+              <div className="flex items-center xl:-ml-16  md:-ml-4" >
+                {isSmall ? (
+                  <img src="/icons/Zenko-logo-small.png" className="h-12 md:w-auto sm:scale-50" alt="Zenko Logo" />
+                ) : (
+                  <div className="p-2">
+                    <img src="/icons/Zenko-logo-crop.png" className="h-12 w-auto" alt="Zenko Logo" />
+                  </div>
+                )}
 
-            </div>
+              </div>
+            </Link>
 
 
             <div className="hidden items-center gap-x-2 lg:flex w-1/2 ml-6">
